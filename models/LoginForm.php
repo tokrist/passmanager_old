@@ -24,12 +24,12 @@ class LoginForm extends Model {
     }
 
     public function login(): ?bool {
-        $user = (new User)->findOne(['username' => Application::$app->auth->encryptData($this->username)]);
+        $user = (new User)->findOne(['userUsername' => Application::$app->auth->encryptData($this->username)]);
         if(!$user) {
             $this->addError('username', 'Ezzel a felhasználónévvel nem létezik felhasználó az adatbázisban!');
             return false;
         }
-        if(!password_verify($this->password, $user->password)) {
+        if(!password_verify($this->password, $user->userPassword)) {
             $this->addError('password', 'Helytelen jelszó!');
             return false;
         }

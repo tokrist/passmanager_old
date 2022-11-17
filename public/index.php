@@ -31,9 +31,10 @@ $app->router->get('/', [SiteController::class, 'index']);
 // Authentication Routes
 $app->router->get('/auth/login', [AuthController::class, 'login']);
 $app->router->post('/auth/login', [AuthController::class, 'login']);
-$app->router->get('/register', [AuthController::class, 'register']);
-$app->router->post('/register', [AuthController::class, 'register']);
 $app->router->get('/logout', [AuthController::class, 'logout']);
+
+// Home Routes
+$app->router->get('/home/dashboard', [SiteController::class, 'dashboard']);
 
 $app->router->get('/profile', [AuthController::class, 'profile']);
 
