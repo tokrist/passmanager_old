@@ -11,6 +11,10 @@ class View {
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }
 
+    public function renderViewOnly($view, $params = []): bool|string {
+        return $this->renderOnlyView($view, $params);
+    }
+
     public function renderContent($viewContent): array|bool|string {
         $layoutContent = $this->layoutContent();
         return str_replace('{{content}}', $viewContent, $layoutContent);

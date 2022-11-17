@@ -49,7 +49,7 @@ class Application {
             echo $this->router->resolve();
         } catch (\Exception $e) {
             $this->response->setStatusCode($e->getCode());
-            echo $this->view->renderView('_error', ['exception' => $e]);
+            echo $this->view->renderViewOnly('_error', ['exception' => $e]);
         }
     }
 
@@ -66,6 +66,7 @@ class Application {
         $primaryKey = $user->primaryKey();
         $primaryValue = $user->{$primaryKey};
         $this->session->set('user', $primaryValue);
+        $this->session->set('timestamp', time());
         return true;
     }
 

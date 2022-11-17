@@ -18,19 +18,19 @@ class LoginForm extends Model {
 
     public function labels(): array {
         return [
-            'username' => "Username",
-            'password' => "Password"
+            'username' => "Felhasználónév",
+            'password' => "Jelszó"
         ];
     }
 
     public function login(): ?bool {
         $user = (new User)->findOne(['username' => Application::$app->auth->encryptData($this->username)]);
         if(!$user) {
-            $this->addError('username', 'User does not exist with this username!');
+            $this->addError('username', 'Ezzel a felhasználónévvel nem létezik felhasználó az adatbázisban!');
             return false;
         }
         if(!password_verify($this->password, $user->password)) {
-            $this->addError('password', 'Password is incorrect!');
+            $this->addError('password', 'Helytelen jelszó!');
             return false;
         }
 
