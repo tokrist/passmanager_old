@@ -11,7 +11,7 @@ abstract class DBModel extends Model {
     abstract public function attributes(): array;
 
     public static function primaryKey(): string {
-        return 'id';
+        return 'userId';
     }
 
     public function save(): bool {

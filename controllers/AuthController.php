@@ -13,7 +13,7 @@ use app\models\User;
 class AuthController extends Controller {
 
     public function __construct() {
-        $this->registerMiddleware(new AuthMiddleware(['profile']));
+        $this->registerMiddleware(new AuthMiddleware(['dashboard']));
     }
 
     public function login(Request $request, Response $response): bool|array|string|null {
@@ -53,9 +53,5 @@ class AuthController extends Controller {
     public function logout(Request $request, Response $response): void {
         Application::$app->logout();
         $response->redirect('/');
-    }
-
-    public function profile(): bool|array|string {
-        return $this->render('profile');
     }
 }

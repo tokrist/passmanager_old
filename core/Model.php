@@ -12,6 +12,8 @@ abstract class Model {
 
     public array $errors = [];
 
+    public array $alerts = [];
+
     public function loadData($data): void {
         foreach ($data as $key => $value) {
             if(property_exists($this, $key)) {

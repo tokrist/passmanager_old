@@ -4,6 +4,7 @@ namespace app\core;
 
 use app\core\database\Database;
 use app\core\database\DBModel;
+use app\models\User;
 
 class Application {
     public string $userClass;
@@ -16,7 +17,7 @@ class Application {
     public Session $session;
     public Auth $auth;
     public Database $db;
-    public ?UserModel $user;
+    public ?USer $user;
     public View $view;
 
     public static Application $app;
@@ -61,7 +62,7 @@ class Application {
         $this->controller = $controller;
     }
 
-    public function login(UserModel $user): bool {
+    public function login(User $user): bool {
         $this->user = $user;
         $primaryKey = $user->primaryKey();
         $primaryValue = $user->{$primaryKey};

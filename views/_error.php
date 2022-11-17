@@ -29,10 +29,9 @@
         <div class="error-page">
             <h2 class="headline text-warning"><?php echo $exception->getCode(); ?></h2>
             <div class="error-content">
-                <h3><i class="fas fa-exclamation-triangle text-warning"></i> Hoppá! Az oldal amit keres nem található!</h3>
+                <h3><i class="fas fa-exclamation-triangle text-warning"></i> <?php echo $exception->getMessage(); ?></h3>
                 <p>
-                    Sajnos nem találtunk olyan oldalt amelyet keresett. Ellenőrizze, hogy jó oldalra keresett-e, esetleg elírta
-                    annak elérési útját, vagy térjen vissza a <a href="/home/dashboard">kezdőlapra</a>.
+                    Ellenőrizze, hogy jó oldalra keresett-e, esetleg elírta annak elérési útját, vagy térjen vissza a <a href="/">kezdőlapra</a>.
                 </p>
             </div>
     </section>

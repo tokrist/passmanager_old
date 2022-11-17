@@ -1,7 +1,6 @@
 <?php
 /** @var $this app\core\View */
 
-$this->title = 'Home';
+$this->title = 'Dashboard | PassManager';
 ?>
 
-<h1>Home</h1>

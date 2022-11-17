@@ -3,12 +3,17 @@
 namespace app\models;
 
 use app\core\Application;
-use app\core\UserModel;
+use app\core\database\DBModel;
 
-class User extends UserModel {
-    public string $username = '';
-    public string $email = '';
-    public string $password = '';
+class User extends DBModel {
+    public string $userUsername = '';
+    public string $userPassword = '';
+    public string $userFullname = '';
+    public string $userEmail = '';
+    public string $userRegisterTime = '';
+    public ?int $userRoleId = NULL;
+    public string $userPicturePath = '';
+    public bool $userCanLogin = false;
     public string $confirmPassword = '';
 
     public static function tableName(): string {
@@ -17,10 +22,6 @@ class User extends UserModel {
 
     public function attributes(): array {
         return ['username', 'email', 'password'];
-    }
-
-    public function getDisplayName(): string {
-        return Application::$app->auth->decryptData($this->username);
     }
 
     public function labels(): array {
@@ -33,9 +34,9 @@ class User extends UserModel {
     }
 
     public function save(): bool {
-        $this->email = Application::$app->auth->encryptData($this->email);
-        $this->username = Application::$app->auth->encryptData($this->username);
-        $this->password = Application::$app->auth->passwordHash($this->password);
+        $this->userEmail = Application::$app->auth->encryptData($this->userEmail);
+        $this->userUsername = Application::$app->auth->encryptData($this->userUsername);
+        $this->userPassword = Application::$app->auth->passwordHash($this->userPassword);
         return parent::save();
     }
 
