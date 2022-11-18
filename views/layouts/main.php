@@ -39,13 +39,13 @@ use app\core\Application;
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item d-none d-sm-inline-block">
-                <span class="nav-top-item"><iclass="fas fa-building"></i>&nbsp
+                <span class="nav-link"><i class="fas fa-building"></i>
                     <strong>Szervezet:</strong> PassManager
                     <?php echo Application::$app->user->getUserRole()['roleIcon'] . ' ' . Application::$app->user->getUserRole()['roleName']; ?>
                 </span>
             </li>
             <li class="nav-item d-sm-inline-block">
-                <span class="nav-top-item"><i class="fas fa-clock"></i>&nbsp
+                <span class="nav-link"><i class="fas fa-clock"></i>&nbsp
                     <span id="time"><?php echo date('Y. m. d. H:i:s') ?></span>
                 </span>
             </li>
@@ -63,7 +63,7 @@ use app\core\Application;
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
                     <img src="<?php echo Application::$app->user->getUserPicturePath();?>"
-                         class="img-circle elevation-2" alt="User Image">
+                         class="img-circle elevation-2" alt="Felhasználó">
                 </div>
                 <div class="info">
                     <a href="/manage/profile" class="d-block">
@@ -138,23 +138,33 @@ use app\core\Application;
                             <li class="nav-item">
                                 <a href="" class="nav-link">
                                     <i class="fa-regular fa-folder-open nav-icon"></i>
-                                    <p>Mappa 1</p>
+                                    <p>Mappa 1 [Szevezet 1]</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link">
                                     <i class="fa-regular fa-folder-open nav-icon"></i>
-                                    <p>Mappa 2</p>
+                                    <p>Mappa 2 [Szevezet 2]</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link">
                                     <i class="fa-regular fa-folder-open nav-icon"></i>
-                                    <p>Mappa 3</p>
+                                    <p>Mappa 1 [Szevezet 2]</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
+
+                    <?php if(Application::$app->user->getUserRole()['rolePermission'] >= 9): ?>
+                    <li class="nav-header">Adminisztráció</li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="nav-icon fa-solid fa-users"></i>
+                            <p>Regisztrált felhasználók</p>
+                        </a>
+                    </li>
+                    <?php endif; ?>
 
                     <li class="nav-header">Kilépés</li>
                     <li class="nav-item">
@@ -177,7 +187,7 @@ use app\core\Application;
             <b>Version</b> DEV 0.1
         </div>
         <strong>Copyright &copy; <?php echo date('Y'); ?> |
-            <a href="https://tokrist.hu" target="_blank">tokrist.hu</a> | </strong> Minden jog fenntartva.
+            <a href="https://workmaster.hu" target="_blank">workmaster.hu</a> | </strong> Minden jog fenntartva.
     </footer>
 </div>
 

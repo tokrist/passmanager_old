@@ -38,12 +38,6 @@ class Session {
         unset($_SESSION[$key]);
     }
 
-    public function checkSession(): void {
-        if(($this->get('timestamp')+3600) < time()) {
-            Application::$app->response->redirect('/expired');
-        }
-    }
-
     public function __destruct() {
         $flashMessages = $_SESSION[self::FLASH_KEY] ?? [];
         foreach ($flashMessages as $key => &$flashMessage) {
