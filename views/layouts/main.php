@@ -32,15 +32,20 @@ use app\core\Application;
 
 <div class="wrapper">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa-solid fa-bars"></i></a>
+            </li>
+        </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item d-none d-sm-inline-block">
-                <span class="nav-link"><iclass="fas fa-building"></i>&nbsp
-                    <strong>Szervezet:</strong> Minta szervezet
+                <span class="nav-top-item"><iclass="fas fa-building"></i>&nbsp
+                    <strong>Szervezet:</strong> PassManager
                     <?php echo Application::$app->user->getUserRole()['roleIcon'] . ' ' . Application::$app->user->getUserRole()['roleName']; ?>
                 </span>
             </li>
             <li class="nav-item d-sm-inline-block">
-                <span class="nav-link"><i class="fas fa-clock"></i>&nbsp
+                <span class="nav-top-item"><i class="fas fa-clock"></i>&nbsp
                     <span id="time"><?php echo date('Y. m. d. H:i:s') ?></span>
                 </span>
             </li>
@@ -76,6 +81,12 @@ use app\core\Application;
                             <p>Irányítópult</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="nav-icon fa-solid fa-user"></i>
+                            <p>Profil</p>
+                        </a>
+                    </li>
 
                     <li class="nav-header">Szervezet</li>
                     <li class="nav-item">
@@ -92,20 +103,54 @@ use app\core\Application;
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="" class="nav-link">
-                                    <i class="fa-regular fa-circle nav-icon"></i>
+                                    <i class="fa-regular fa-building-circle-arrow-right nav-icon"></i>
                                     <p>Szervezet 1</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link">
-                                    <i class="fa-regular fa-circle nav-icon"></i>
+                                    <i class="fa-regular fa-building-circle-arrow-right nav-icon"></i>
                                     <p>Szervezet 2</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link">
-                                    <i class="fa-regular fa-circle nav-icon"></i>
+                                    <i class="fa-regular fa-building-circle-arrow-right nav-icon"></i>
                                     <p>Szervezet 3</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-header">Mappák</li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="nav-icon fa-solid fa-folder-plus"></i>
+                            <p>Új mappa létrehozása</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="nav-icon fa-solid fa-folder"></i>
+                            <p>Mappák<i class="fa-solid fa-angle-left right"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="fa-regular fa-folder-open nav-icon"></i>
+                                    <p>Mappa 1</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="fa-regular fa-folder-open nav-icon"></i>
+                                    <p>Mappa 2</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="fa-regular fa-folder-open nav-icon"></i>
+                                    <p>Mappa 3</p>
                                 </a>
                             </li>
                         </ul>
@@ -138,7 +183,7 @@ use app\core\Application;
 
 <script>
     function time() {
-        var now = new Date();
+        let now = new Date();
 
         document.getElementById("time").innerHTML = now.getFullYear() + ". " + ("0" + (now.getMonth() + 1)).slice(-2) + ". " + ("0" + now.getDate()).slice(-2) + ". " + ("0" + now.getHours()).slice(-2) + ":" + ("0" + now.getMinutes()).slice(-2) + ":" + ("0" + now.getSeconds()).slice(-2);
     }

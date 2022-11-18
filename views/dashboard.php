@@ -3,7 +3,7 @@
 
 use app\core\Application;
 
-$this->title = 'Dashboard | PassManager';
+$this->title = 'Irányítópult | PassManager';
 ?>
 
 <section class="content-header">

@@ -34,10 +34,9 @@ class LoginForm extends Model {
             return false;
         }
         if(!$user->userCanLogin) {
-            echo "<script>setTimeout(function(){Swal.mixin({toast: true,position: 'top-end',showConfirmButton: false,timer: 5000}).fire({icon: 'error',title: 'Hiba! Nincs joga belépni a rendszerbe!'})},100);</script>";
+            echo "<script>setTimeout(function(){Swal.fire({icon: 'error',title: 'Hiba! Nincs joga belépni a rendszerbe!', toast: true, position: 'top-end', showConfirmButton: false, timer: 5000})},100);</script>";
             return false;
         }
-
         return Application::$app->login($user);
     }
 }

@@ -27,8 +27,9 @@ class AuthController extends Controller {
         if($request->isPost()) {
             $loginForm->loadData($request->getBody());
             if($loginForm->validate() && $loginForm->login()) {
-                $response->redirect('/home/dashboard');
-                return NULL;
+                echo "<script>setTimeout(function(){Swal.fire({icon: 'success',title: 'Sikeres bejelentkezés!', toast: true, position: 'top-end', showConfirmButton: false, timer: 3000}).then((result) =>{window.location = '/home/dashboard';})},100);</script>";
+                $this->setLayout('auth');
+                return $this->render('login', ['model' => $loginForm]);
             }
         }
 
