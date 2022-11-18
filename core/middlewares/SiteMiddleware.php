@@ -1,10 +1,9 @@
 <?php
 
-namespace app\controllers;
+namespace app\core\middlewares;
 
 use app\core\Application;
 use app\core\exceptions\ForbiddenException;
-use app\core\middlewares\BaseMiddleware;
 
 class SiteMiddleware extends BaseMiddleware {
     public array $actions = [];

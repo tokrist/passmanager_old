@@ -36,7 +36,7 @@ class Application {
         $this->userClass = $config['userClass'];
         $this->db = new Database($config['database']);
 
-        $primaryValue = $this->session->get('user');
+        $primaryValue = $this->session->get('userId');
         if($primaryValue) {
             $primaryKey = $this->userClass::primaryKey();
             $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
@@ -66,14 +66,15 @@ class Application {
         $this->user = $user;
         $primaryKey = $user->primaryKey();
         $primaryValue = $user->{$primaryKey};
-        $this->session->set('user', $primaryValue);
+        $this->session->set('userId', $primaryValue);
         $this->session->set('timestamp', time());
         return true;
     }
 
     public function logout(): void {
         $this->user = null;
-        $this->session->remove('user');
+        $this->session->remove('userId');
+        $this->session->remove('timestamp');
     }
 
     public static function isGuest(): bool {

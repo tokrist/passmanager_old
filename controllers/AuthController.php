@@ -7,6 +7,7 @@ use app\core\Controller;
 use app\core\middlewares\AuthMiddleware;
 use app\core\Request;
 use app\core\Response;
+use app\core\Session;
 use app\models\LoginForm;
 use app\models\User;
 
@@ -17,6 +18,10 @@ class AuthController extends Controller {
     }
 
     public function login(Request $request, Response $response): bool|array|string|null {
+        if(Application::$app->session->get('userId') !== false) {
+            $response->redirect('/home/dashboard');
+        }
+
         $loginForm = new LoginForm();
 
         if($request->isPost()) {
