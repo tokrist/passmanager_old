@@ -18,7 +18,7 @@ class Form {
         return new InputField($model, $attribute);
     }
 
-    public function loginField(Model $model, $attribute, $icon): InputLoginField {
-        return new InputLoginField($model, $attribute, $icon);
+    public function authField(Model $model, $attribute, $icon): InputAuthField {
+        return new InputAuthField($model, $attribute, $icon);
     }
 }

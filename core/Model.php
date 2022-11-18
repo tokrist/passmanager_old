@@ -81,7 +81,7 @@ abstract class Model {
         return [
             self::RULE_REQUIRED => 'A mező kitöltése kötelező!',
             self::RULE_EMAIL => 'A mezőnek egy érvényes email címnek kel lennie!',
-//            self::RULE_MIN => 'Min length of this field must be {min}',
+            self::RULE_MIN => 'A mezőnek legalább {min} karakter hosszúságúnak kell lennie!',
 //            self::RULE_MAX => 'Max length of this field must be {max}',
             self::RULE_MATCH => 'Ennek a mezőnek meg kell egyeznie a {match} mezővel!',
             self::RULE_UNIQUE => 'Ez a(z) {field} már létezik az adatbázisunkban!'

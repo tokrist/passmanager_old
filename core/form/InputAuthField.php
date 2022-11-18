@@ -4,7 +4,7 @@ namespace app\core\form;
 
 use app\core\Model;
 
-class InputLoginField extends BaseLoginField {
+class InputAuthField extends BaseLoginField {
     public const TYPE_TEXT = 'text';
     public const TYPE_PASSWORD = 'password';
 

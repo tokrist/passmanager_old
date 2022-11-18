@@ -31,6 +31,8 @@ $app->router->get('/', [SiteController::class, 'index']);
 // Authentication Routes
 $app->router->get('/auth/login', [AuthController::class, 'login']);
 $app->router->post('/auth/login', [AuthController::class, 'login']);
+$app->router->get('/auth/register', [AuthController::class, 'register']);
+$app->router->post('/auth/register', [AuthController::class, 'register']);
 $app->router->get('/logout', [AuthController::class, 'logout']);
 
 // Home Routes

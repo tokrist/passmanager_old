@@ -49,6 +49,7 @@ class Application {
         try {
             echo $this->router->resolve();
         } catch (\Exception $e) {
+            var_dump($e);
             $this->response->setStatusCode($e->getCode());
             echo $this->view->renderViewOnly('_error', ['exception' => $e]);
         }

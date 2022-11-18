@@ -43,6 +43,28 @@ abstract class DBModel extends Model {
         return $statement->fetchObject(static::class);
     }
 
+    public static function query(string $tableName, string $attributeName, string $value): bool|array {
+        if($attributeName != NULL && $value != NULL) {
+            $sql = "WHERE $attributeName = '$value'";
+        } else {
+            $sql = '';
+        }
+        $statement = self::prepare("SELECT * FROM $tableName $sql");
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
+    public static function queryCount(string $tableName, $attributeName, $value): int {
+        if($attributeName != NULL && $value != NULL) {
+            $sql = "WHERE $attributeName = '$value'";
+        } else {
+            $sql = '';
+        }
+        $statement = self::prepare("SELECT * FROM $tableName $sql");
+        $statement->execute();
+        return $statement->rowCount();
+    }
+
     public static function prepare($sql): bool|\PDOStatement {
         return Application::$app->db->pdo->prepare($sql);
     }
