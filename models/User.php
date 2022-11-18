@@ -21,7 +21,7 @@ class User extends DBModel {
     }
 
     public function attributes(): array {
-        return ['userUsername', 'userPassword', 'userFullname', 'userEmail'];
+        return ['userUsername', 'userPassword', 'userFullname', 'userEmail', 'userRegisterTime', 'userRoleId', 'userPicturePath', 'userCanLogin'];
     }
 
     public function labels(): array {

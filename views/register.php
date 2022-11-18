@@ -21,7 +21,7 @@ $this->title = 'Regisztráció | PassManager';
     <?php echo $form->authField($model, 'confirmPassword', 'fa-solid fa-lock')->passwordField();?>
     <div class="row">
         <div class="col-auto">
-            <button type="submit" class="btn btn-primary btn-block">Bejelentkezés</button>
+            <button type="submit" class="btn btn-primary btn-block">Regisztrálás</button>
         </div>
     </div>
     <?php app\core\form\Form::end(); ?>

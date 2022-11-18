@@ -43,7 +43,7 @@ class AuthController extends Controller {
             $user->loadData($request->getBody());
 
             if($user->validate() && $user->save()) {
-                Application::$app->login($user);
+                Application::$app->login((new User)->findOne(['userUsername' => $user->userUsername]));
                 Application::$app->response->redirect('/');
                 exit;
             }
