@@ -14,11 +14,11 @@ $this->title = 'Regisztráció | PassManager';
     <p class="login-box-msg">Regisztráljon új fiókot</p>
 
     <?php $form = Form::begin('', 'post'); ?>
-    <?php echo $form->authField($model, 'userFullname', 'fa-solid fa-signature');?>
-    <?php echo $form->authField($model, 'userUsername', 'fa-solid fa-user');?>
-    <?php echo $form->authField($model, 'userEmail', 'fa-solid fa-at');?>
-    <?php echo $form->authField($model, 'userPassword', 'fa-solid fa-lock')->passwordField();?>
-    <?php echo $form->authField($model, 'confirmPassword', 'fa-solid fa-lock')->passwordField();?>
+    <?php echo $form->field($model, 'userFullname', 'fa-solid fa-signature');?>
+    <?php echo $form->field($model, 'userUsername', 'fa-solid fa-user');?>
+    <?php echo $form->field($model, 'userEmail', 'fa-solid fa-at');?>
+    <?php echo $form->field($model, 'userPassword', 'fa-solid fa-lock')->passwordField();?>
+    <?php echo $form->field($model, 'confirmPassword', 'fa-solid fa-lock')->passwordField();?>
     <div class="row">
         <div class="col-auto">
             <button type="submit" class="btn btn-primary btn-block">Regisztrálás</button>

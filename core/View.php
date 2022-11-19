@@ -4,6 +4,7 @@ namespace app\core;
 
 class View {
     public string $title = '';
+    public array $scripts = [];
 
     public function renderView($view, $params = []): array|bool|string {
         $viewContent = $this->renderOnlyView($view, $params);
@@ -18,6 +19,14 @@ class View {
     public function renderContent($viewContent): array|bool|string {
         $layoutContent = $this->layoutContent();
         return str_replace('{{content}}', $viewContent, $layoutContent);
+    }
+
+    public function addScript($script): void {
+        $this->scripts[] = $script;
+    }
+
+    public function getScripts(): array {
+        return $this->scripts;
     }
 
     protected function layoutContent(): bool|string {

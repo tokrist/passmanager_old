@@ -25,17 +25,17 @@ abstract class BaseLoginField {
     public function __toString(): string {
         return sprintf('
             <div class="input-group has-validation mb-3">
-                %s
-                <div class="input-group-append">
+                <div class="input-group-prepend">
                     <div class="input-group-text">
                         <span class="%s"></span>
                     </div>
                 </div>
+                %s
                 <div class="invalid-feedback">%s</div>
             </div>
         ',
-            $this->renderInput(),
             $this->icon,
+            $this->renderInput(),
             $this->model->getFirstError($this->attribute)
 
         );

@@ -90,7 +90,7 @@ use app\core\Application;
 
                     <li class="nav-header">Szervezet</li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="/manage/organizations/new" class="nav-link">
                             <i class="nav-icon fa-solid fa-plus"></i>
                             <p>Új szervezet létrehozása</p>
                         </a>
@@ -215,5 +215,14 @@ use app\core\Application;
 <script src="/assets/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/assets/js/adminlte.js"></script>
+
+<script>
+<?php
+    foreach (Application::$app->view->getScripts() as $index => $script) {
+        echo $script;
+    }
+?>
+</script>
+
 </body>
 </html>

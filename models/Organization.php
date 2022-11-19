@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\core\Application;
 use app\core\database\DBModel;
 
 class Organization extends DBModel {
@@ -29,5 +30,23 @@ class Organization extends DBModel {
         return [
             'orgName' => "Szervezet neve"
         ];
+    }
+
+    public function save(): bool {
+        $this->orgName = Application::$app->auth->encryptData($this->orgName);
+        $this->orgOwnerId = Application::$app->user->userId;
+        parent::save();
+        self::insert('USER_ORGANIZATIONS', ['orgId' => self::getOrganization('orgName', $this->orgName)['orgId']]);
+
+        return true;
+    }
+
+    public function getOrganization(string $identifier, $value): array {
+        $result = self::query('ORGANIZATIONS', $identifier, $value);
+        $values = [];
+        foreach ($result as $row => $itemValue) {
+            $values[$row] = $itemValue;
+        }
+        return $values[0];
     }
 }

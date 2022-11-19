@@ -14,11 +14,7 @@ class Form {
         echo '</form>';
     }
 
-    public function field(Model $model, $attribute): InputField {
-        return new InputField($model, $attribute);
-    }
-
-    public function authField(Model $model, $attribute, $icon): InputAuthField {
-        return new InputAuthField($model, $attribute, $icon);
+    public function field(Model $model, $attribute, $icon): InputField {
+        return new InputField($model, $attribute, $icon);
     }
 }

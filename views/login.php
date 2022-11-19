@@ -14,8 +14,8 @@ $this->title = 'Bejelentkezés | PassManager';
     <p class="login-box-msg">Jelentkezzen be a munkamenet megkezdéséhez</p>
 
     <?php $form = Form::begin('', 'post'); ?>
-    <?php echo $form->authField($model, 'username', 'fa-solid fa-user');?>
-    <?php echo $form->authField($model, 'password', 'fa-solid fa-lock')->passwordField();?>
+    <?php echo $form->field($model, 'username', 'fa-solid fa-user');?>
+    <?php echo $form->field($model, 'password', 'fa-solid fa-lock')->passwordField();?>
     <div class="row">
         <div class="col-auto">
             <button type="submit" class="btn btn-primary btn-block">Bejelentkezés</button>

@@ -19,7 +19,7 @@ abstract class DBModel extends Model {
         $attributes = $this->attributes();
         $params = array_map(fn($attr) => ":$attr", $attributes);
 
-        $statement = self::prepare("INSERT INTO $tableName (".implode(',', $attributes).") VALUES (".implode(',', $params).") ");
+        $statement = self::prepare("INSERT INTO $tableName (".implode(',', $attributes).") VALUES (".implode(',', $params).")");
 
         foreach ($attributes as $attribute) {
             $statement->bindValue(":$attribute", $this->{$attribute});
@@ -63,6 +63,15 @@ abstract class DBModel extends Model {
         $statement = self::prepare("SELECT * FROM $tableName $sql");
         $statement->execute();
         return $statement->rowCount();
+    }
+
+    public static function insert(string $tableName, array $attributes): bool {
+        $params = array_map(fn($attr) => "$attr", $attributes);
+        var_dump($attributes);
+        $statement = self::prepare("INSERT INTO $tableName (".implode(',', $attributes).") VALUES (".implode(',', $params).") ");
+        var_dump($statement);
+        //$statement->execute();
+        return true;
     }
 
     public static function prepare($sql): bool|\PDOStatement {
