@@ -5,16 +5,29 @@ namespace app\models;
 use app\core\database\DBModel;
 
 class Organization extends DBModel {
+    public ?int $orgId = NULL;
+    public string $orgName = '';
+    public ?int $orgOwnerId = NULL;
+    public string $orgRegisterTime = ''; //0000-00-00 00:00:00
+
 
     public static function tableName(): string {
-        // TODO: Implement tableName() method.
+        return 'ORGANIZATIONS';
     }
 
     public function attributes(): array {
-        // TODO: Implement attributes() method.
+        return ['orgName', 'orgOwnerId'];
     }
 
     public function rules(): array {
-        // TODO: Implement rules() method.
+        return [
+            'orgName' => [self::RULE_REQUIRED, [self::RULE_UNIQUE, 'class' => self::class]]
+        ];
+    }
+
+    public function labels(): array {
+        return [
+            'orgName' => "Szervezet neve"
+        ];
     }
 }

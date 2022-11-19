@@ -6,6 +6,7 @@ use app\core\Application;
 use app\core\database\DBModel;
 
 class User extends DBModel {
+    public int $userId = 0;
     public string $userUsername = '';
     public string $userPassword = '';
     public string $userFullname = '';
@@ -22,6 +23,16 @@ class User extends DBModel {
 
     public function attributes(): array {
         return ['userUsername', 'userPassword', 'userFullname', 'userEmail', 'userRegisterTime', 'userRoleId', 'userPicturePath', 'userCanLogin'];
+    }
+
+    public function rules(): array {
+        return [
+            'userUsername' => [self::RULE_REQUIRED, [self::RULE_UNIQUE, 'class' => self::class]],
+            'userFullname' => [self::RULE_REQUIRED],
+            'userEmail' => [self::RULE_REQUIRED, self::RULE_EMAIL, [self::RULE_UNIQUE, 'class' => self::class], 'attribute'],
+            'userPassword' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8]],
+            'confirmPassword' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'userPassword']],
+        ];
     }
 
     public function labels(): array {
@@ -43,16 +54,6 @@ class User extends DBModel {
         $this->userCanLogin = true;
 
         return parent::save();
-    }
-
-    public function rules(): array {
-        return [
-            'userUsername' => [self::RULE_REQUIRED, [self::RULE_UNIQUE, 'class' => self::class]],
-            'userFullname' => [self::RULE_REQUIRED],
-            'userEmail' => [self::RULE_REQUIRED, self::RULE_EMAIL, [self::RULE_UNIQUE, 'class' => self::class], 'attribute'],
-            'userPassword' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8]],
-            'confirmPassword' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'userPassword']],
-        ];
     }
 
     /** Getters */
