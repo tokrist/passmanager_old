@@ -26,7 +26,7 @@ $config = [
 
 $app = new Application(dirname(__DIR__), $config);
 
-$app->router->get('/', [SiteController::class, 'index']);
+$app->router->get('/', [AuthController::class, 'index']);
 
 // Authentication Routes
 $app->router->get('/auth/login', [AuthController::class, 'login']);
@@ -37,7 +37,10 @@ $app->router->get('/logout', [AuthController::class, 'logout']);
 
 // Home Routes
 $app->router->get('/home/dashboard', [SiteController::class, 'dashboard']);
+$app->router->get('/home/profile', [SiteController::class, 'profile']);
 
-$app->router->get('/profile', [AuthController::class, 'profile']);
+// Organization management Routes
+$app->router->get('/manage/organizations/new', [SiteController::class, 'newOrganization']);
+$app->router->post('/manage/organizations/new', [SiteController::class, 'newOrganization']);
 
 $app->run();

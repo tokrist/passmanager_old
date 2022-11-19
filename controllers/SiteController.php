@@ -8,14 +8,14 @@ use app\core\middlewares\SiteMiddleware;
 
 class SiteController extends Controller {
     public function __construct() {
-        $this->registerMiddleware(new SiteMiddleware(['dashboard']));
-    }
-
-    public function index(): void {
-        Application::$app->response->redirect('/auth/login');
+        $this->registerMiddleware(new SiteMiddleware());
     }
 
     public function dashboard(): bool|array|string {
         return $this->render('dashboard');
+    }
+
+    public function newOrganization() {
+
     }
 }

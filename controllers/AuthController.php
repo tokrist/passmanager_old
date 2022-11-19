@@ -13,8 +13,8 @@ use app\models\User;
 
 class AuthController extends Controller {
 
-    public function __construct() {
-        $this->registerMiddleware(new AuthMiddleware(['dashboard']));
+    public function index(): void {
+        Application::$app->response->redirect('/auth/login');
     }
 
     public function login(Request $request, Response $response): bool|array|string|null {
